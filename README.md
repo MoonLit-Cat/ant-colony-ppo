@@ -6,6 +6,8 @@ a clean PPO implementation on a custom Gymnasium environment.
 
 ![Training curves](assets/training_curves.png)
 
+![Colony demo](assets/colony.gif)
+
 ## Highlights
 
 - **Shared policy:** all 10 ants use the same Actor-Critic network (parameter sharing).
@@ -45,9 +47,9 @@ when its energy is low. See [Lessons](#lessons).
     │   ├── colony_ppo.pt       # Final weights
     │   └── colony_ppo_best.pt  # Best-by-eval-return weights
     ├── assets/
-    │   └── training_curves.png
+    │   ├── training_curves.png
+    │   └── colony.gif
     ├── requirements.txt
-    ├── LICENSE
     └── README.md
 
 ## Environment
@@ -121,7 +123,7 @@ not new survival behavior.
 ### Why invalid moves remain nonzero
 
 Invalid moves (walking into a wall, tree, or another ant) end around 500 per
-episode even after training -better than the ~700 of random ants-, but not
+episode even after training - better than the ~700 of random ants - but not
 zero. Because there is no "stay" action, ants *must* take an action every
 step; when boxed in by trees and other ants, an invalid move is the only
 available choice. Adding a no-op action is the obvious next step.
